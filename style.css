@@ -2,13 +2,23 @@
   box-sizing: border-box;
 }
 
-/* .container {
+#grid-container {
   display: flex;
+  flex-direction: column;
+  height: 95vh;
 }
 
-div.container > div {
-  flex: 1 0 100px;
-  width: 100px;
-  height: 100px;
+#menu {
+  display: flex;
+  gap: 24px;
+}
+
+.row,
+.column {
+  flex: 1 0 auto;
+}
+
+.column {
   border-style: solid;
-} */
+  border-width: thin;
+}

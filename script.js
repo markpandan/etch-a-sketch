@@ -1,24 +1,44 @@
-const GRID = 16;
-let container = document.querySelector("#grid-container");
+let grid = 16;
+let sketchColor = "red";
+
+let gridContainer = document.querySelector("#grid-container");
+let setGridSize = document.querySelector("#setGridSize");
+let colorSelection = document.querySelector("#color-selection");
+
+setGridSize.addEventListener("click", () => {
+  let promptGridSize;
+  do {
+    promptGridSize = prompt("Enter grid value (limit 100):");
+  } while (promptGridSize > 100);
+
+  grid = promptGridSize;
+  gridContainer.replaceChildren();
+  generateGrid();
+});
+
+colorSelection.addEventListener("click", (e) => {
+  sketchColor = e.target.id;
+});
+
+function createBox() {
+  let column = document.createElement("div");
+  column.className = "column";
+  column.addEventListener("mouseenter", () => {
+    column.style.backgroundColor = sketchColor;
+  });
+
+  return column;
+}
 
 function generateGrid() {
-  for (i = 0; i < GRID; i++) {
+  for (i = 0; i < grid; i++) {
     let row = document.createElement("div");
     row.className = "row";
     row.style.display = "flex";
-    container.appendChild(row);
+    gridContainer.appendChild(row);
 
-    for (j = 0; j < GRID; j++) {
-      let column = document.createElement("div");
-      column.className = "column";
-      column.style.width = "50px";
-      column.style.height = "37.5px";
-      column.style.flex = "1 0 auto";
-      column.style.borderStyle = "solid";
-      column.addEventListener("mouseenter", () => {
-        column.style.backgroundColor = "red";
-      });
-
+    for (j = 0; j < grid; j++) {
+      let column = createBox();
       row.appendChild(column);
     }
   }
