@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+/* .container {
+  display: flex;
+}
+
+div.container > div {
+  flex: 1 0 100px;
+  width: 100px;
+  height: 100px;
+  border-style: solid;
+} */
